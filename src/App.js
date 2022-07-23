@@ -1,14 +1,28 @@
-import React, { Component } from 'react';
-import Navbar from './components/layout/Navbar';
+import React, { Component } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import './App.css';
+import Navbar from "./components/layout/Navbar";
+import Index from "./components/layout/Index";
+import {Provider} from "./context";
 
-class App extends Component{
+import "./App.css";
+
+class App extends Component {
   render() {
-    return(
-      <div className="App">
-        <Navbar />
-      </div>
+    return (
+      <Provider>
+        <Router>
+          <React.Fragment>
+            <Navbar />
+            <div className="container">
+              <Routes>
+                <Route exact path="/" element = {<Index />} />
+              </Routes>
+            </div>
+          </React.Fragment>
+        </Router>
+
+      </Provider>
     );
   }
 }
